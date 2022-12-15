@@ -1,0 +1,18 @@
+﻿@model MVCDBSTOK.Models.Entity.TblKategori
+@{
+    ViewBag.Title = "KategoriGuncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("KtgGuncelle", "Kategori", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(k=>k.KategoriId)
+        @Html.TextBoxFor(k => k.KategoriId, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(k=>k.KategoriAd)
+        @Html.TextBoxFor(k => k.KategoriAd, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Kategori Guncelle</button>
+    </div>
+}

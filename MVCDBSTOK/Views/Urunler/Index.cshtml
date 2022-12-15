@@ -1,0 +1,45 @@
+﻿@using MVCDBSTOK.Models.Entity
+@model List<TblUrunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>URUN ID</th>
+            <th>URUN ADI</th>
+            <th>URUN KATEGORİ</th>
+            <th>URUN MARKASI</th>
+            <th>URUN FİYATİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urunler in Model)
+        {
+            <tr>
+                <th>@urunler.UrunId</th>
+                <td>@urunler.UrunAd</td>
+                <td>@urunler.TblKategori.KategoriAd</td>
+                <td>@urunler.Marka</td>
+                <td>@urunler.Fiyat</td>
+                <td><a href="/URUNLER/UrunSil/@urunler.UrunId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/URUNLER/UrunGuncelle/@urunler.UrunId" class="btn btn-success">Guncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/URUNLER/YeniUrun/" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
+@*<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1"></script>*@
+
+@*<script type="text/javascript" src="cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>*@
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+@*<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />*@
+
+<script>
+    $('#tbl1').DataTable();
+</script>

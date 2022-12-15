@@ -1,0 +1,37 @@
+﻿@model  MVCDBSTOK.Models.Entity.TblSatislar
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    @*List<TblSatislar>*@
+    Satis Yap
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Satis Yapma Ekrani</h2>
+            </div>
+            <form method="post" action="/Satislar/YeniSatis/">
+                <div class="modal-body">
+                    <label>Urun Adi</label>
+                    @*<input type="text" name="Urun" class="form-control" />*@
+                    @Html.TextBoxFor(s => s.Urun, new { @class = "form-control" })
+                    <br />
+                    <label>Musteri Adi Ve Soyadi Markasi</label>
+                    @Html.TextBoxFor(s => s.Musteri, new { @class = "form-control" })
+                    <br />
+                    <label>Adet</label>
+                    @Html.TextBoxFor(s => s.Adet, new { @class = "form-control" })
+                    <br />
+                    <label>Fiyat</label>
+                    @Html.TextBoxFor(s => s.Fiyat, new { @class = "form-control" })
+                    <br />
+                    <button type="submit" class="btn btn-info">Satis Islemini Yap</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgec</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@using MVCDBSTOK.Models.Entity
+@model List<TblMusteri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>MUSTERİ ID</th>
+        <th>MUSTERİ ADI</th>
+        <th>MUSTERİ SOYADI</th>
+        <th>SİL</th>
+        <th>GUNCELLE</th>
+        <th>ALERT</th>
+    </tr>
+    <tbody>
+        @foreach (var musteri in Model)
+        {
+          <tr>
+             <th>@musteri.MusteriId</th>
+             <td>@musteri.MusteriAd</td>
+             <td>@musteri.MusteriSoyad</td>
+             <td><a href="/MUSTERI/MusteriSil/@musteri.MusteriId" class="btn btn-danger">Sil</a></td>
+             <td><a href="/MUSTERI/MusteriGuncelle/@musteri.MusteriId" class="btn btn-success">Guncelle</a></td>
+             <td>@Html.ActionLink("SİL BUTONU","MusteriSil",new { id=musteri.MusteriId},
+             new { @class="btn btn-warning",onclick="return confirm('Gercekten Silmek Istiyor musunuz..:')"})</td>
+          </tr>
+        }
+    </tbody>
+</table>
+<a href="/MUSTERI/YeniMusteri/" class="btn btn-primary">YENİ MÜSTERİ EKLE</a>

@@ -1,0 +1,29 @@
+﻿@model  MVCDBSTOK.Models.Entity.TblUrunler
+@{
+    ViewBag.Title = "UrunGuncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("UrnGuncelle", "Urunler", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(u => u.UrunId)
+    @Html.TextBoxFor(u => u.UrunId, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(u => u.UrunAd)
+    @Html.TextBoxFor(u => u.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(u => u.UrunKategori)
+    @*@Html.TextBoxFor(u => u.UrunKategori, new { @class = "form-control" })*@
+    @Html.DropDownListFor(k => k.TblKategori.KategoriId, (List<SelectListItem>)ViewBag.urn, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(u => u.Marka)
+    @Html.TextBoxFor(u => u.Marka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(u => u.Fiyat)
+    @Html.TextBoxFor(u => u.Fiyat, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Urun Guncelle</button>
+    </div>
+}
+
